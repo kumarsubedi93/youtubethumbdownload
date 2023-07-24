@@ -8,7 +8,7 @@ const port = 9001;
 
 app.use('/static', express.static('static'))
 app.use(cors({
-    origin:'http://localhost:5173'
+    origin:['http://localhost:5173', 'http://202.51.82.38', 'https://youtubethumbdownload.com']
 }))
 app.use(bodyParser.json())
 app.post('/download', async (req, res) => {
