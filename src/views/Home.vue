@@ -147,7 +147,7 @@ import axios from 'axios';
 
 const downloadImage = async (imglink = null, name) => {
   if(!imglink || !ytVideoId) return;
-  const url =  import.meta.env.BACKEND_HOST_URL || 'http://localhost:3001/download'
+  const url =  import.meta.env.VITE_BACKEND_HOST_URL || 'http://localhost:3001/download'
   axios.post(url, {
     link:imglink
   },{
