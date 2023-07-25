@@ -170,6 +170,7 @@ const downloadImage = async (imglink = null, name) => {
 
  const initialFunction = () => {
     var value = search.value;
+    if(!value) return;
     var isVimeo = checkVimeo(value);
     if (isVimeo) {
         isVimeo = isVimeo[isVimeo.length - 1];
