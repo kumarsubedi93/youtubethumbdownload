@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Disallow: /root
+Sitemap: https://youtubethumbdownload.com/sitemap.xml
