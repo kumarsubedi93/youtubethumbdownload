@@ -9,7 +9,7 @@ import { RouterLink, RouterView } from 'vue-router'
             <input type="checkbox" id="nav-check">
             <div class="nav-header">
               <div class="nav-title font-weight-bold">
-                Youtube Thumbnail Download
+                <h1 class="font-25">  Youtube Thumbnail Download </h1> 
               </div>
             </div>
             <div class="nav-btn">
@@ -39,5 +39,13 @@ import { RouterLink, RouterView } from 'vue-router'
 <style scoped>
   .link-y{
     color:#fff
+  }
+  .font-25 {
+    font-size: 25px;
+  }
+  @media only screen and (max-width:386px) {
+    .nav {
+      height: 86px;;
+    }
   }
 </style>

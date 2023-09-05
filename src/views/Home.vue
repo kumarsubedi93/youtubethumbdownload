@@ -1,52 +1,50 @@
 <template>
     <div class="mt-4">
-      <AnimationComponent/>
        <v-card class="no-radius">
           <v-card-title class="font-weight-bold"> 
-            {{  title  }}
+            <h2 class="fix-font-size">  {{  title  }} </h2>
           </v-card-title>
           <v-img
               src="/banner-avif.jpg"
               height="125"
               cover
               class="bg-grey-lighten-2"
+              alt="youtube vimeo banner"
             ></v-img>
-            <div class="input-box mt-4 pa-2">
-                <v-text-field
-                v-model="search"
-                label="Paste Youtube or Vimeo video link here"
-                loading
-                placeholder="Start typing..."
-                variant="outlined"
-              >
-                <template v-slot:loader>
-                  <v-progress-linear
-                    :active="loading"
-                    absolute
-                    height="7"
-                    indeterminate
-                  ></v-progress-linear>
-                </template>
-
-                <template v-slot:prepend-inner>
-                  <img
-                        height="50"
-                        width="50"
-                        src="/youtube.svg"
-                        alt="youtube-icon"
-                      >
+              <div class="input-box mt-4 pa-2">
+                  <v-text-field
+                  v-model="search"
+                  label="Paste Youtube or Vimeo video link here"
+                  loading
+                  placeholder="Start typing..."
+                  variant="outlined"
+                >
+                  <template v-slot:loader>
+                    <v-progress-linear
+                      :active="loading"
+                      absolute
+                      height="7"
+                      indeterminate
+                    ></v-progress-linear>
                   </template>
-                  <template v-slot:append-inner>
-                    <v-btn @click="getThumbnail" elevation="2" color="primary" variant="elevated"> GO
+
+                  <template v-slot:prepend-inner>
+                    <img
+                          height="50"
+                          width="50"
+                          src="/youtube.svg"
+                          alt="youtube-icon"
+                        >
+                    </template>
+                </v-text-field> 
+                  <v-btn @click="getThumbnail" class="go-btn" elevation="2" color="primary" variant="elevated"> GO
                       <template v-slot:prepend>
                         <span class="icon-holder">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" enable-background="new 0 0 512 512"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
                         </span>
                       </template>
-                    </v-btn>
-                  </template>
-              </v-text-field> 
-            </div>
+                  </v-btn>
+              </div>
 
             <div class="result-box pa-3">
               <div class="img-box" v-if="videos.length">
@@ -81,22 +79,30 @@
                 multiple
               >
                 <v-expansion-panel value="first">
-                  <v-expansion-panel-title class="font-weight-bold">Use Of YouTube Thumbnail Downloader</v-expansion-panel-title>
+                  <v-expansion-panel-title class="font-weight-bold"><h3> Use Of YouTube Thumbnail Downloader </h3></v-expansion-panel-title>
                   <v-expansion-panel-text class="pa-2">
+                    <p> 
                     This website offers a convenient solution for individuals seeking to extract a thumbnail image from any YouTube video.
                     The downloaded thumbnail can be utilized for various activities, such as presentations, animation work, or other creative endeavors. With its user-friendly interface, this YouTube thumbnail downloader makes the process quick and hassle-free
+                    </p>
                   </v-expansion-panel-text>
                 </v-expansion-panel>
 
                 <v-expansion-panel value="second">
-                  <v-expansion-panel-title class="font-weight-bold">Is it  legal to  download YouTube videos and thumbnail</v-expansion-panel-title>
+                  <v-expansion-panel-title class="font-weight-bold">
+                    <h3> Is it  legal to  download YouTube videos and thumbnail </h3>
+                  </v-expansion-panel-title>
                   <v-expansion-panel-text class="pa-2">
-                    Although it is legal to download YouTube videos and thumbnails according to YouTube's privacy policy, it's important to note that both are copyrighted products. Therefore, permission from the author should be obtained before reusing them
+                    <p> Although it is legal to download YouTube videos and thumbnails according to YouTube's privacy policy, it's important to note that both are copyrighted products. Therefore, permission from the author should be obtained before reusing them </p>
                   </v-expansion-panel-text>
                 </v-expansion-panel>
 
                 <v-expansion-panel  value="third">
-                  <v-expansion-panel-title class="font-weight-bold"> How to download YouTube Thumbnails </v-expansion-panel-title>
+                  <v-expansion-panel-title class="font-weight-bold">
+                     <h3>
+                        How to download YouTube Thumbnails 
+                     </h3>
+                    </v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <ol class="pa-2">
                       <li>  Paste YouTube video link in above text box. </li> 
@@ -121,10 +127,26 @@
     color: #fff;
     fill: currentColor;
   }
+
+  .fix-font-size {
+    font-size: 1.25rem;
+  }
+
+  .animation-content{
+    max-width: 100%;
+    position: relative;
+  }
+  .input-box{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .go-btn {
+    height: 50px;
+    margin-left: 10px;
+  }
 </style>
 
 <script setup>
-import AnimationComponent from '../components/AnimationComponent.vue';
 import { ref } from 'vue'
 import axios from 'axios';
  const search = ref(null)
@@ -165,6 +187,8 @@ const downloadImage = async (imglink = null, name) => {
  }
 
  const getThumbnail = () => {
+   document.querySelector('.v-field__input input').blur();
+   document.body.focus()
    initialFunction()
  }
 
